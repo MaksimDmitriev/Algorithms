@@ -5,24 +5,26 @@ import java.util.Queue;
 
 public class Main {
 
+    private static final String EOL = System.getProperty("line.separator");
+
     public static void main(String[] args) {
-        Node l = new Node(null, null, "l");
-        Node m = new Node(null, null, "m");
-        Node n = new Node(null, null, "n");
-        Node h = new Node(n, null, "h");
+        Node l = new Node(null, null, "l", 3);
+        Node m = new Node(null, null, "m", 3);
+        Node n = new Node(null, null, "n", 4);
 
-        Node i = new Node(null, null, "i");
+        Node h = new Node(n, null, "h", 3);
+        Node i = new Node(null, null, "i", 3);
 
-        Node d = new Node(h, i, "d");
-        Node e = new Node(null, null, "e");
+        Node d = new Node(h, i, "d", 2);
+        Node e = new Node(null, null, "e", 2);
 
-        Node f = new Node(null, null, "f");
-        Node g = new Node(l, m, "g");
+        Node f = new Node(null, null, "f", 2);
+        Node g = new Node(l, m, "g", 2);
 
-        Node b = new Node(d, e, "b");
-        Node c = new Node(f, g, "c");
+        Node b = new Node(d, e, "b", 1);
+        Node c = new Node(f, g, "c", 1);
 
-        Node root = new Node(b, c, "root");
+        Node root = new Node(b, c, "root", 0);
         printTree(root);
     }
 
@@ -43,9 +45,16 @@ public class Main {
     static void printTree(Node root) {
         Queue<Node> nodes = new LinkedList<Node>();
         nodes.add(root);
+        int currentLevel = 0;
         while (!nodes.isEmpty()) {
-            Node node = nodes.poll();
-            System.out.print(node);
+            Node node = nodes.remove();
+            int nodeLevel = node.getLevel();
+            if (nodeLevel > currentLevel) {
+                currentLevel = nodeLevel;
+                System.out.print(EOL + node);
+            } else {
+                System.out.print(node);
+            }
 
             Node left = node.getLeft();
             if (left != null) {
