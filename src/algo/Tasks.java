@@ -1,8 +1,9 @@
 package algo;
 
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
-
 
 public class Tasks {
 
@@ -32,7 +33,7 @@ public class Tasks {
             } else {
                 System.out.print(node);
             }
-    
+
             Node left = node.getLeft();
             if (left != null) {
                 nodes.add(left);
@@ -42,6 +43,30 @@ public class Tasks {
                 nodes.add(right);
             }
         }
+    }
+
+    /**
+     * Write a function that takes the following inputs and gives the following outputs.
+     *
+     * Input: A list of points in 2-dimensional space, and an integer k
+     * Output: The k input points closest to (5, 5), using Euclidean distance
+     *
+     * @param target
+     * @param k
+     * @return
+     */
+    static PriorityQueue<Point> findClosestPoint(Point target, int k) {
+        Comparator<Point> comparator = new Comparator<Point>() {
+
+            @Override
+            public int compare(Point o1, Point o2) {
+                // TODO Auto-generated method stub
+                return 0;
+            }
+        };
+        PriorityQueue<Point> points = new PriorityQueue<Point>(0, comparator);
+        // TODO:
+        return points;
     }
 
 }
