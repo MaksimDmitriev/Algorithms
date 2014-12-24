@@ -1,11 +1,12 @@
-package algo;
+package algo.printtree;
 
-import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Tasks {
+
+public class Main {
+
+    static final String EOL = System.getProperty("line.separator");
 
     /*
      *           a
@@ -20,6 +21,27 @@ public class Tasks {
      * A binary tree represent an organization hierarchy.
      * The root node is the CEO and etc. design a algorithm to print the tree level by level.
      */
+    public static void main(String[] args) {
+        Node l = new Node(null, null, "l", 3);
+        Node m = new Node(null, null, "m", 3);
+        Node n = new Node(null, null, "n", 4);
+
+        Node h = new Node(n, null, "h", 3);
+        Node i = new Node(null, null, "i", 3);
+
+        Node d = new Node(h, i, "d", 2);
+        Node e = new Node(null, null, "e", 2);
+
+        Node f = new Node(null, null, "f", 2);
+        Node g = new Node(l, m, "g", 2);
+
+        Node b = new Node(d, e, "b", 1);
+        Node c = new Node(f, g, "c", 1);
+
+        Node root = new Node(b, c, "root", 0);
+        printTree(root);
+    }
+
     static void printTree(Node root) {
         Queue<Node> nodes = new LinkedList<Node>();
         nodes.add(root);
@@ -29,7 +51,7 @@ public class Tasks {
             int nodeLevel = node.getLevel();
             if (nodeLevel > currentLevel) {
                 currentLevel = nodeLevel;
-                System.out.print(Main.EOL + node);
+                System.out.print(EOL + node);
             } else {
                 System.out.print(node);
             }
@@ -43,30 +65,6 @@ public class Tasks {
                 nodes.add(right);
             }
         }
-    }
-
-    /**
-     * Write a function that takes the following inputs and gives the following outputs.
-     *
-     * Input: A list of points in 2-dimensional space, and an integer k
-     * Output: The k input points closest to (5, 5), using Euclidean distance
-     *
-     * @param target
-     * @param k
-     * @return
-     */
-    static PriorityQueue<Point> findClosestPoint(Point target, int k) {
-        Comparator<Point> comparator = new Comparator<Point>() {
-
-            @Override
-            public int compare(Point o1, Point o2) {
-                // TODO Auto-generated method stub
-                return 0;
-            }
-        };
-        PriorityQueue<Point> points = new PriorityQueue<Point>(0, comparator);
-        // TODO:
-        return points;
     }
 
 }
