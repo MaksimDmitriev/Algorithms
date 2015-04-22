@@ -13,6 +13,10 @@ public class Main {
         bst.insert(6);
         bst.insert(8);
         bst.insert(150);
+        bst.insert(120);
+        bst.insert(170);
+        bst.insert(110);
+        bst.insert(125);
 
         bst.printTreeLevelbyLevel();
     }
