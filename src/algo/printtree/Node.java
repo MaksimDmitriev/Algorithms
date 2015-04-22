@@ -2,33 +2,43 @@ package algo.printtree;
 
 public class Node {
 
-    private final Node left;
-    private final Node right;
-    private final String data;
-    private final int level;
+    int mData;
+    Node mLeft;
+    Node mRight;
 
-    public Node(Node left, Node right, String data, int level) {
-        this.left = left;
-        this.right = right;
-        this.data = data;
-        this.level = level;
+    public Node(int data) {
+        mData = data;
+    }
+
+    public void setLeft(Node left) {
+        mLeft = left;
+    }
+
+    public void setRight(Node right) {
+        mRight = right;
     }
 
     @Override
     public String toString() {
-        return data;
+        return Integer.toString(mData);
     }
 
-    public Node getLeft() {
-        return left;
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Node)) {
+            return false;
+        }
+        Node other = (Node) obj;
+        return mData == other.mData;
     }
 
-    public Node getRight() {
-        return right;
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + mData;
+        return result;
     }
-
-    public int getLevel() {
-        return level;
-    }
-
 }
