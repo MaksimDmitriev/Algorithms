@@ -3,7 +3,7 @@ package algo.printtree;
 public class Main {
 
     public static void main(String[] args) {
-
+        // http://www.careercup.com/question?id=6311899375337472
         BST bst = new BST(100);
         bst.insert(10);
         bst.insert(5);
